@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skill-radar"
+version = "0.1.0"
+description = "Local-first data pipeline: European tech job postings to a skills-demand dashboard"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = [
+    "httpx>=0.28,<1",
+    "tenacity>=9,<10",
+    "psycopg[binary]>=3.2,<4",
+    "pydantic>=2.8,<3",
+    "ollama>=0.6,<1",
+    "python-dotenv>=1.0,<2",
+]
+
+[project.optional-dependencies]
+dbt = ["dbt-core>=1.12,<1.13", "dbt-postgres>=1.11,<1.12"]
+dashboard = ["streamlit>=1.50,<2", "sqlalchemy>=2,<3"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+skill-radar = "skill_radar.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+skill_radar = ["schema.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

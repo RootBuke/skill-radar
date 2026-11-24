@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets and local config: never commit these
+.env
+
+# Raw data stays on your machine (the folder itself is kept via .gitkeep)
+data/raw/*
+!data/raw/.gitkeep
+
+# dbt build output and logs
+dbt/target/
+dbt/dbt_packages/
+dbt/.user.yml
+dbt/logs/
+logs/
+
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
