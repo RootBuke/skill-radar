@@ -1,10 +1,8 @@
-
-
 from pathlib import Path
 
 import psycopg
 
-from skill_radar import config  
+from skill_radar import config  # noqa: F401
 
 SCHEMA_FILE = Path(__file__).with_name("schema.sql")
 
